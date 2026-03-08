@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Aghitouta 💗</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9ecb,#ffd6ec);
+    font-family:Arial, Helvetica, sans-serif;
+    overflow:hidden;
+}
+
+#word{
+    text-align:center;
+    cursor:pointer;
+    transition:all 0.4s ease;
+}
+
+.message{
+    max-width:800px;
+    text-align:center;
+    padding:20px;
+    font-size:20px;
+    line-height:1.7;
+    color:#fff;
+}
+
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation:fly 3s linear forwards;
+}
+
+@keyframes fly{
+    0%{transform:translateY(0) scale(1); opacity:1;}
+    100%{transform:translateY(-800px) scale(2); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="word"></div>
+
+<script>
+
+const words = [
+"اااااي زين نتي نتي 🙂👋 وركي هناااا",
+"وااا ضربييي الله يعطيك مصطفى 🙂💋",
+"زيديي",
+"زيديييي",
+"زيدييييي",
+"باقيي شويااا زيديييييي",
+"زيديييييييييييييي",
+"جات جات جات"
+];
+
+let index = 0;
+let size = 25;
+
+const wordDiv = document.getElementById("word");
+
+function showWord(){
+    if(index < words.length){
+        wordDiv.innerHTML = words[index];
+        wordDiv.style.fontSize = size + "px";
+        size += 12;
+        index++;
+    }else{
+        explode();
+        showFinalMessage();
+    }
+}
+
+wordDiv.onclick = showWord;
+
+showWord();
+
+function explode(){
+    for(let i=0;i<80;i++){
+        let heart = document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="💗";
+        heart.style.left=Math.random()*window.innerWidth+"px";
+        heart.style.top=Math.random()*window.innerHeight+"px";
+        heart.style.fontSize=(Math.random()*30+20)+"px";
+        document.body.appendChild(heart);
+    }
+}
+
+function showFinalMessage(){
+    wordDiv.onclick=null;
+    wordDiv.className="message";
+
+wordDiv.innerHTML=`
+
+F3id el mar2a 🌹<br><br>
+
+habit n9olek aGhitouta beli nti ajmel haja 3tathali el hayat w 3tahali rbi 💗✨.<br><br>
+
+Wjoudek fi hayati kan lih dwr kbir f wech ana 3lih db wakha mkybalk walo, wlkin kon m3rftkch kant atkon version khlaf mni w 3labali kif gha tkon w ch7al khayba. merçi kii dkhltiii ouuu mlgrr ga3 so3obat nchlh nkmloo w nowslo lwin rana habin nchlh kima lyoum 💕😍.<br><br>
+
+nti mkch ghir habibi wla shbti wla madamti, nti elaman ta3i 🫂 wdh7ka li tnwer nhari wyami wsini mkch haja 3adiyaa 🌹✨. the most special girl 💕<br><br>
+
+Fi had el youm lmomayz habit nkarmek kon 9dit w n9olek bli nti testaheli kol el 7ob w ta9dir 💗 7it 9albek tayeb wbyd w rou7ek bzzf chebaa wakhaa 3asabiaa wlkin 3arf li kayn 🫂🫰🏻<br><br>
+
+rabi yahfdek lia w ykhalik dima far7ana w mbtasma 😍✨ wyshlkk fwech bghiti wyhtlk li bghiti bin ydik nchlh, w nb9a dima jnbek fikol lahda mhma kant l2wdaa3 🫂.<br><br>
+
+Kol 3am wnti bkhir ya aghla insana fi hayati 💕🌹<br>
+I love you more day by day 💗💗💗💗🫰🏻
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
