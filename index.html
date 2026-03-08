@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>For Aghitouta 💗</title>
-
 <style>
 body{
     margin:0;
@@ -11,45 +10,60 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#ff9ecb,#ffd6ec);
+    background:linear-gradient(135deg,#ffb6c1,#ffc0cb,#ffe4e1);
     font-family:Arial, Helvetica, sans-serif;
     overflow:hidden;
+    position:relative;
 }
 
 #word{
     text-align:center;
     cursor:pointer;
+    z-index:10;
     transition:all 0.4s ease;
 }
 
 .message{
-    max-width:800px;
+    max-width:700px;
     text-align:center;
     padding:20px;
-    font-size:20px;
-    line-height:1.7;
+    font-size:16px; /* نص أصغر للسهولة */
+    line-height:1.5;
     color:#fff;
+    z-index:10;
 }
 
-.heart{
+/* تأثيرات متحركة للكلمات */
+.word-effect{
+    display:inline-block;
+    animation:pop 0.5s ease forwards;
+}
+
+@keyframes pop{
+    0%{transform:scale(0.5) rotate(-10deg); opacity:0;}
+    50%{transform:scale(1.3) rotate(10deg); opacity:1; text-shadow:0 0 8px #fff;}
+    100%{transform:scale(1) rotate(0deg); opacity:1;}
+}
+
+.effect{
     position:absolute;
-    font-size:20px;
-    animation:fly 3s linear forwards;
+    animation:move 6s linear infinite;
+    opacity:0.6;
+    user-select:none;
+    pointer-events:none;
 }
 
-@keyframes fly{
-    0%{transform:translateY(0) scale(1); opacity:1;}
-    100%{transform:translateY(-800px) scale(2); opacity:0;}
+@keyframes move{
+    0%{transform:translateY(0) rotate(0deg); opacity:0.6;}
+    100%{transform:translateY(-900px) rotate(360deg); opacity:0;}
 }
 </style>
 </head>
-
 <body>
 
 <div id="word"></div>
 
 <script>
-
 const words = [
 "اااااي زين نتي نتي 🙂👋 وركي هناااا",
 "وااا ضربييي الله يعطيك مصطفى 🙂💋",
@@ -66,60 +80,75 @@ let size = 25;
 
 const wordDiv = document.getElementById("word");
 
+// عرض كل كلمة مع تأثير حلو
 function showWord(){
     if(index < words.length){
-        wordDiv.innerHTML = words[index];
-        wordDiv.style.fontSize = size + "px";
+        wordDiv.innerHTML = `<span class="word-effect" style="font-size:${size}px">${words[index]}</span>`;
         size += 12;
         index++;
     }else{
-        explode();
+        showEffects();
+        explodeFinal();
         showFinalMessage();
     }
 }
 
 wordDiv.onclick = showWord;
-
 showWord();
 
-function explode(){
-    for(let i=0;i<80;i++){
-        let heart = document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="💗";
-        heart.style.left=Math.random()*window.innerWidth+"px";
-        heart.style.top=Math.random()*window.innerHeight+"px";
-        heart.style.fontSize=(Math.random()*30+20)+"px";
-        document.body.appendChild(heart);
+// تأثيرات القلوب والورود والقبلات المتحركة
+function showEffects(){
+    const symbols = ["💗","🌹","💋"];
+    for(let i=0;i<40;i++){
+        let span = document.createElement("div");
+        span.className="effect";
+        span.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+        span.style.left=Math.random()*window.innerWidth+"px";
+        span.style.top=Math.random()*window.innerHeight+"px";
+        span.style.fontSize=(Math.random()*25+15)+"px";
+        span.style.animationDuration=(Math.random()*5+3)+"s";
+        document.body.appendChild(span);
     }
 }
 
+// انفجار المفرقعات النهائي
+function explodeFinal(){
+    setTimeout(()=>{
+        for(let i=0;i<100;i++){
+            let span = document.createElement("div");
+            span.className="effect";
+            span.innerHTML = ["💗","💋","🌹"][Math.floor(Math.random()*3)];
+            span.style.left=Math.random()*window.innerWidth+"px";
+            span.style.top=Math.random()*window.innerHeight+"px";
+            span.style.fontSize=(Math.random()*40+20)+"px";
+            span.style.animationDuration=(Math.random()*2+1)+"s";
+            document.body.appendChild(span);
+        }
+    },200);
+}
+
+// الرسالة النهائية مقسمة وصغيرة الحجم
 function showFinalMessage(){
     wordDiv.onclick=null;
     wordDiv.className="message";
-
-wordDiv.innerHTML=`
-
+    wordDiv.innerHTML=`
 F3id el mar2a 🌹<br><br>
 
 habit n9olek aGhitouta beli nti ajmel haja 3tathali el hayat w 3tahali rbi 💗✨.<br><br>
 
-Wjoudek fi hayati kan lih dwr kbir f wech ana 3lih db wakha mkybalk walo, wlkin kon m3rftkch kant atkon version khlaf mni w 3labali kif gha tkon w ch7al khayba. merçi kii dkhltiii ouuu mlgrr ga3 so3obat nchlh nkmloo w nowslo lwin rana habin nchlh kima lyoum 💕😍.<br><br>
+Wjoudek fi hayati kan lih dwr kbir f wech ana 3lih db wakha mkybalk walo, wlkin kon m3rftkch kant atkon version khlaf mni w 3labali kif gha tkon w ch7al khayba.<br><br>
 
-nti mkch ghir habibi wla shbti wla madamti, nti elaman ta3i 🫂 wdh7ka li tnwer nhari wyami wsini mkch haja 3adiyaa 🌹✨. the most special girl 💕<br><br>
+nti mkch ghir habibi wla shbti wla madamti, nti elaman ta3i 🫂 w dh7ka li tnwer nhari 🌹✨. the most special girl 💕<br><br>
 
-Fi had el youm lmomayz habit nkarmek kon 9dit w n9olek bli nti testaheli kol el 7ob w ta9dir 💗 7it 9albek tayeb wbyd w rou7ek bzzf chebaa wakhaa 3asabiaa wlkin 3arf li kayn 🫂🫰🏻<br><br>
+Fi had el youm lmomayz habit nkarmek kon 9dit w n9olek bli nti testaheli kol el 7ob w ta9dir 💗<br><br>
 
-rabi yahfdek lia w ykhalik dima far7ana w mbtasma 😍✨ wyshlkk fwech bghiti wyhtlk li bghiti bin ydik nchlh, w nb9a dima jnbek fikol lahda mhma kant l2wdaa3 🫂.<br><br>
+rabi yahfdek lia w ykhalik dima far7ana w mbtasma 😍✨<br><br>
 
 Kol 3am wnti bkhir ya aghla insana fi hayati 💕🌹<br>
 I love you more day by day 💗💗💗💗🫰🏻
-
 `;
-
 }
 
 </script>
-
 </body>
 </html>
