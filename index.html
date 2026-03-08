@@ -27,13 +27,12 @@ body{
     max-width:700px;
     text-align:center;
     padding:20px;
-    font-size:16px; /* نص أصغر للسهولة */
+    font-size:16px;
     line-height:1.5;
     color:#fff;
     z-index:10;
 }
 
-/* تأثيرات متحركة للكلمات */
 .word-effect{
     display:inline-block;
     animation:pop 0.5s ease forwards;
@@ -80,7 +79,7 @@ let size = 25;
 
 const wordDiv = document.getElementById("word");
 
-// عرض كل كلمة مع تأثير حلو
+// عرض الكلمات مع تأثير حلو
 function showWord(){
     if(index < words.length){
         wordDiv.innerHTML = `<span class="word-effect" style="font-size:${size}px">${words[index]}</span>`;
@@ -96,10 +95,10 @@ function showWord(){
 wordDiv.onclick = showWord;
 showWord();
 
-// تأثيرات القلوب والورود والقبلات المتحركة
+// تأثيرات متحركة للقلب والورود والقبلات قبل الرسالة النهائية
 function showEffects(){
     const symbols = ["💗","🌹","💋"];
-    for(let i=0;i<40;i++){
+    for(let i=0;i<20;i++){  // قللنا العدد من 40 إلى 20
         let span = document.createElement("div");
         span.className="effect";
         span.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
@@ -111,10 +110,10 @@ function showEffects(){
     }
 }
 
-// انفجار المفرقعات النهائي
+// انفجار نهائي مخفف
 function explodeFinal(){
     setTimeout(()=>{
-        for(let i=0;i<100;i++){
+        for(let i=0;i<50;i++){  // قللنا العدد من 100 إلى 50
             let span = document.createElement("div");
             span.className="effect";
             span.innerHTML = ["💗","💋","🌹"][Math.floor(Math.random()*3)];
@@ -127,24 +126,21 @@ function explodeFinal(){
     },200);
 }
 
-// الرسالة النهائية مقسمة وصغيرة الحجم
+// الرسالة النهائية بدون تغيير أي حرف
 function showFinalMessage(){
     wordDiv.onclick=null;
     wordDiv.className="message";
     wordDiv.innerHTML=`
-F3id el mar2a 🌹<br><br>
+F3id el mar2a 🌹
+habit n9olek  aGhitouta beli nti ajmel haja 3tathali el hayat w 3tahali rbi 💗✨.
+Wjoudek fi hayati kan lih dwr kbir f wech ana 3lih db wakha mkybalk walo, wlkin kon m3rftkch kant atkon version khlaf mni w 3labali kif gha tkon w ch7al khayba  merçi kii dkhltiii ouuu mlgrr ga3 so3obat nchlh nkmloo w nowslo lwin rana habin nchlh kima lyoum 💕😍.
 
-habit n9olek aGhitouta beli nti ajmel haja 3tathali el hayat w 3tahali rbi 💗✨.<br><br>
+nti mkch ghir habibi wla shbti wla madamti ، nti elaman ta3i  🫂 wdh7ka li tnwer nhari wyami wsini mkch haja 3adiyaa 🌹✨. the most special girl 💕
+Fi had el youm lmomayz habit nkarmek kon 9dit w n9olek bli nti testaheli kol el 7ob w ta9dir 💗 7it 9albek tayeb wbyd w rou7ek bzzf chebaa wakhaa 3asabiaa wlkin 3arf li kayn 🫂🫰🏻
 
-Wjoudek fi hayati kan lih dwr kbir f wech ana 3lih db wakha mkybalk walo, wlkin kon m3rftkch kant atkon version khlaf mni w 3labali kif gha tkon w ch7al khayba.<br><br>
+rabi yahfdek lia w ykhalik dima far7ana w mbtasma 😍✨ wyshlkk fwech bghiti wyhtlk li bghiti bin ydik nchlh, w nb9a dima jnbek fikol lahda  mhma kant l2wdaa3 🫂.
 
-nti mkch ghir habibi wla shbti wla madamti, nti elaman ta3i 🫂 w dh7ka li tnwer nhari 🌹✨. the most special girl 💕<br><br>
-
-Fi had el youm lmomayz habit nkarmek kon 9dit w n9olek bli nti testaheli kol el 7ob w ta9dir 💗<br><br>
-
-rabi yahfdek lia w ykhalik dima far7ana w mbtasma 😍✨<br><br>
-
-Kol 3am wnti bkhir ya aghla insana fi hayati 💕🌹<br>
+Kol 3am wnti bkhir ya aghla insana fi hayati 💕🌹، w nchlh n3icho m3a b3d bzf lahadat cheba  ✨.
 I love you more day by day 💗💗💗💗🫰🏻
 `;
 }
